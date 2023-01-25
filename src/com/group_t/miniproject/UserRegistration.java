@@ -62,7 +62,7 @@ public class UserRegistration implements ECommerce {
 	@Override
 	public void userLogin() {
 		
-		Scanner sc = new Scanner(System.in);
+Scanner sc = new Scanner(System.in);
 		
 		System.out.println("Enter Username ");
 		username = sc.nextLine();
@@ -74,21 +74,26 @@ public class UserRegistration implements ECommerce {
 			
 			ConnectionDetails details = new ConnectionDetails();
 			con = details.getConnectionDetails();
-			ps = con.prepareStatement("SELECT * FROM users");
+			ps = con.prepareStatement("Select password from users where username  = ?");
+			ps.setString(1, username);
 			ResultSet rs = ps.executeQuery();
+			
 			while(rs.next()) {
-			if((username.equals(rs.getString(3))) && (password.equals(rs.getString(4)))) {
+				String dbPassword = rs.getString("password");	
+				if((password.equals(dbPassword))) {
+			
 				System.out.println("checked");
 			}
 			else {
 				System.out.println("invalid");
 			}
 			}
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
 		}
+			catch (Exception e) {
+				e.printStackTrace();
+			}
 	}
+	
 
 	@Override
 	public void adminLogin() {
