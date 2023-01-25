@@ -2,7 +2,7 @@ package com.group_t.miniproject;
 
 public interface ECommerce {
 
-	public void userRegistration();
+	public void userRegistration(String firstName, String lastName, String username, String password );
 	
 	public void userLogin();
 	
