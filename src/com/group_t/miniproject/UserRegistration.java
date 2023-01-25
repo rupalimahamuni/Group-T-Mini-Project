@@ -62,7 +62,7 @@ public class UserRegistration implements ECommerce {
 	@Override
 	public void userLogin() {
 		
-		Scanner sc = new Scanner(System.in);
+Scanner sc = new Scanner(System.in);
 		
 		System.out.println("Enter Username ");
 		username = sc.nextLine();
